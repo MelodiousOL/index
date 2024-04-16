@@ -546,6 +546,7 @@ section {
   display: inline-block;
   font-weight: 600;
   margin-bottom: 10px;
+  font-family: "Pacifico", cursive;
 }
 
 .resume .resume-item ul {
