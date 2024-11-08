@@ -39,7 +39,13 @@
   <script>
     // 禁用右鍵選單
     document.addEventListener('contextmenu', function(event) {
+      event.preventDefault();
+    });
+
+    document.addEventListener('touchstart', function(event) {
+      if (event.target.tagName === 'IMG') {
         event.preventDefault();
+      }
     });
   </script>
 
