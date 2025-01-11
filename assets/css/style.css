@@ -275,7 +275,7 @@ h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/Sky_Love.jpg") center center no-repeat;
+  background: url("../img/sky_love.jpg") center center no-repeat;
   background-size: cover;
   position: relative;
 }
