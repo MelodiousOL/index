@@ -275,7 +275,7 @@ h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/wp.jpg") center center no-repeat;
+  background: url("../img/Sky_Love.JPG") center center no-repeat;
   background-size: cover;
   position: relative;
 }
@@ -288,7 +288,7 @@ h6 {
 
 #hero:before { /*白色透明遮罩*/
   content: "";
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.5);
   position: absolute;
   bottom: 0;
   top: 0;
