@@ -5,23 +5,6 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
-// 打開彈出框
-document.getElementById("openModal").addEventListener("click", function (e) {
-  e.preventDefault();
-  document.getElementById("modal").style.display = "block";
-});
-
-// 關閉彈出框
-document.getElementById("closeModal").addEventListener("click", function () {
-  document.getElementById("modal").style.display = "none";
-});
-
-// 點擊彈出框外部關閉
-window.addEventListener("click", function (e) {
-  if (e.target === document.getElementById("modal")) {
-    document.getElementById("modal").style.display = "none";
-  }
-});
 
 
 (function() {
