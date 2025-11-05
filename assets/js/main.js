@@ -148,9 +148,9 @@
     new Typed('.typed', {
       strings: typed_strings,
       loop: true,
-      typeSpeed: 90, /*打字速度*/
-      backSpeed: 40, /*刪除速度*/
-      backDelay: 1500 /*打完字串後等待幾秒退回*/
+      typeSpeed: 70, /*打字速度*/
+      backSpeed: 30, /*刪除速度*/
+      backDelay: 700 /*打完字串後等待幾秒退回*/
     });
   }
 
