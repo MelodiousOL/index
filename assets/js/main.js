@@ -148,8 +148,8 @@
     new Typed('.typed', {
       strings: typed_strings,
       loop: true,
-      typeSpeed: 100, /*打字速度*/
-      backSpeed: 70, /*刪除速度*/
+      typeSpeed: 80, /*打字速度*/
+      backSpeed: 60, /*刪除速度*/
       backDelay: 700 /*打完字串後等待幾秒退回*/
     });
   }
