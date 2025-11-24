@@ -312,7 +312,8 @@ h6 {
 }
 
 #hero p span { /*打字文字字體*/
-  color: #1b4cbc; /*#0563bb*/
+  color: #9cc2fa;
+  /* color: #1b4cbc; #0563bb 9cc2fa*/
   letter-spacing: 1px;
   
 }
