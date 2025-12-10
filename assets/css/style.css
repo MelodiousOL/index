@@ -288,7 +288,7 @@ h6 {
 
 #hero:before { /*白色透明遮罩*/
   content: "";
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.5);
   position: absolute;
   bottom: 0;
   top: 0;
@@ -301,7 +301,7 @@ h6 {
   font-size: 64px;
   font-weight: 700;
   line-height: 56px;
-  color: #9cc2fa; /*#45505b*/
+  color: #45505b; /*#45505b*/
 }
 
 #hero p {
@@ -312,7 +312,7 @@ h6 {
 }
 
 #hero p span { /*打字文字字體*/
-  color: #9cc2fa;
+  color: #1b4cbc;
   /* color: #1b4cbc; #0563bb 9cc2fa*/
   letter-spacing: 1px;
   
@@ -325,7 +325,7 @@ h6 {
 #hero .social-links a {
   font-size: 24px;
   display: inline-block;
-  color: #9cc2fa; /* 45505b */
+  color: #45505b; /* 45505b */
   line-height: 1;
   margin-right: 20px;
   transition: 0.3s;
