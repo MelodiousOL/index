@@ -149,7 +149,7 @@
       strings: typed_strings,
       loop: true,
       typeSpeed: 90, /*打字速度*/
-      backSpeed: 60, /*刪除速度*/
+      backSpeed: 50, /*刪除速度*/
       backDelay: 750 /*打完字串後等待幾秒退回*/
     });
   }
