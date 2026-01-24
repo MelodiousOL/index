@@ -1,0 +1,55 @@
+# ==========================
+# 系統與作業系統檔案
+# ==========================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+# Windows
+Thumbs.db
+desktop.ini
+
+# ==========================
+# Node.js 專案
+# ==========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# ==========================
+# Build / 發佈檔案
+# ==========================
+dist/
+build/
+*.min.js
+*.bundle.js
+
+# ==========================
+# 環境設定與敏感資料
+# ==========================
+.env
+.env.local
+.env.*.local
+*.secret
+
+# ==========================
+# 編輯器 / IDE 設定檔
+# ==========================
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.swp
+*.swo
+
+# ==========================
+# 作業暫存檔 / log
+# ==========================
+*.log
+*.tmp
+*.bak
+*.old
