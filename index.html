@@ -69,11 +69,378 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-    </style>
+
+        /* 淺色模式變數覆蓋 */
+
+        /* 修正淺色模式下 Psychology 區塊的文字對比度 */
+        body.light #research .glass-card p.text-lg {
+            color: #1e293b; /* 深色標題文字 */
+        }
+
+        body.light #thoughtModal .glass-card p.text-lg {
+            color: #1e293b; /* 深色標題文字 */
+        }
+
+        body.light #research .glass-card span.text-slate-400 {
+            color: #475569; /* 稍微加深的副標題描述 */
+        }
+
+        body.light #thoughtModal .glass-card span.text-slate-400 {
+            color: #475569; /* 稍微加深的副標題描述 */
+        }
+
+        /* 如果你的標籤 (#Professionalism) 也太淡，可以補上這條 */
+        body.light #research .glass-card .text-indigo-400 {
+            color: #4f46e5; 
+            font-weight: 500;
+        }
+
+        body.light #thoughtModal .glass-card .text-indigo-400 {
+            color: #4f46e5; 
+            font-weight: 500;
+        }
+
+        body.light {
+            background: #f1f5f9; /* 淺灰藍底 */
+            color: #1e293b;
+        }
+
+        body.light .bg-gradient {
+            background: radial-gradient(circle at 50% 50%, #e2e8f0 0%, #f1f5f9 100%);
+        }
+
+        body.light .blob {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+        }
+
+        body.light .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.05);
+        }
+
+        body.light .text-gradient {
+            background: linear-gradient(to right, #4f46e5, #c026d3);
+            -webkit-background-clip: text;
+        }
+
+        body.light nav {
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        body.light .text-slate-400, body.light .text-slate-500 {
+            color: #64748b;
+        }
+
+        body.light .mobile-link {
+            color: #1e293b;
+        }
+
+        /* 確保過渡平滑 */
+        body {
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        /* --- 淺色模式文字顏色校正 --- */
+
+        /* 1. 導覽列文字 */
+        body.light nav a, 
+        body.light nav button {
+            color: #1e293b !important;
+        }
+
+        /* 2. 主視覺區塊 (Hero Section) */
+        body.light main h2.text-indigo-300 {
+            color: #4f46e5; /* // Hello, World. I am */
+        }
+        body.light main h1 {
+            color: #0f172a; /* 悠揚 */
+        }
+        body.light main p.text-slate-400 {
+            color: #475569; /* 標語與描述 */
+        }
+
+        /* 3. 聯絡區塊 (Contact Section) */
+        body.light #contact h2 {
+            color: #0f172a; /* 期待與你的交流 */
+        }
+        body.light #contact p.text-slate-400 {
+            color: #334155; /* 聯絡描述文字 */
+        }
+        body.light #contact .glass-card h4 {
+            color: #64748b; /* Connect via Social Media */
+        }
+
+        /* 4. 技能區塊 (Skills) */
+        body.light #skills h3 {
+            color: #0f172a;
+        }
+        body.light #skills span {
+            color: #1e293b; /* 技能名稱 Swift/C++ 等 */
+        }
+
+        /* 5. 頁尾 (Footer) */
+        body.light footer p {
+            color: #64748b;
+        }
+
+        /* 6. 彈窗 (Modal) 文字校正 */
+        body.light #infoModal h4 {
+            color: #1e293b;
+        }
+        body.light #infoModal p {
+            color: #475569;
+        }
+        body.light #infoModal .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        /* 7. 其他標題與卡片內容 */
+        body.light h2, body.light h3, body.light h4 {
+            color: #0f172a;
+        }
+
+        /* --- 淺色模式下標籤與小方框的校正 --- */
+
+        /* 修正 Psychology 區塊標籤方框 */
+        body.light #research .glass-card .bg-white\/5 {
+            background-color: rgba(79, 70, 229, 0.08); /* 淡淡的靛藍色背景 */
+            border: 1px solid rgba(79, 70, 229, 0.15); /* 增加細緻邊框 */
+        }
+
+        body.light #thoughtModal .glass-card .bg-white\/5 {
+            background-color: rgba(79, 70, 229, 0.08); /* 淡淡的靛藍色背景 */
+            border: 1px solid rgba(79, 70, 229, 0.15); /* 增加細緻邊框 */
+        }
+
+        /* 修正 About 區塊的生存 Buff 小方框 */
+        body.light #about .bg-white\/5 {
+            background-color: rgba(0, 0, 0, 0.03); /* 極淺灰色背景 */
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        body.light #about .text-slate-300 {
+            color: #1e293b; /* 讓方框內的文字顯現 */
+        }
+
+        /* 修正 Skill Spectrum 的進度條底色 */
+        body.light .bg-white\/5.rounded-full {
+            background-color: rgba(0, 0, 0, 0.05); /* 讓進度條的軌道清晰可見 */
+        }
+
+        /* 修正「More Info」按鈕在淺色下的樣式 */
+        body.light button[onclick="toggleModal()"] {
+            background-color: rgba(79, 70, 229, 0.1);
+            color: #4f46e5;
+            border: 1px solid rgba(79, 70, 229, 0.2);
+        }
+
+        /* 確保卡片內容垂直佈局，讓標籤始終靠下對齊（更美觀） */
+        #research .glass-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%; /* 強制等高 */
+        }
+
+        #thoughtModal .glass-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%; /* 強制等高 */
+        }
+
+        /* 淺色模式校正 */
+        body.light #research .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.05); /* 細微邊框 */
+            border-left-width: 4px; /* 保留原本的左側粗邊框 */
+        }
+
+        body.light #thoughtModal .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.05); /* 細微邊框 */
+            border-left-width: 4px; /* 保留原本的左側粗邊框 */
+        }
+
+        /* 修正你提到的標籤方框（淺色模式下） */
+        body.light #research .glass-card .bg-white\/5 {
+            background-color: rgba(79, 70, 229, 0.08) !important;
+            border: 1px solid rgba(79, 70, 229, 0.2) !important;
+            display: inline-block; /* 確保方框正確包裹文字 */
+        }
+
+        /* 1. 強制重置 Psychology 區塊的容器 */
+        #research .flex-col.md\:flex-row {
+            display: flex !important;
+            align-items: stretch !important; /* 核心：強制子元素拉伸 */
+        }
+
+        /* 2. 確保卡片本身是 Flex 容器，且高度填滿 */
+        #research .glass-card {
+            display: flex !important;
+            flex-direction: column !important;
+            height: auto !important; /* 覆蓋掉可能的固定高度 */
+            flex: 1; /* 讓卡片在 md 以上等寬 */
+        }
+
+        /* 3. 確保文字區塊會「長大」推開標籤 */
+        #research .flex-grow {
+            flex-grow: 1 !important;
+        }
+
+        /* 4. 移除 Hover 時可能導致的排版偏移 (改用陰影而非位移) */
+        body.light #research .glass-card:hover {
+            transform: none; /* 在這個區塊停用位移，避免高度計算錯誤 */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-color: var(--accent);
+        }
+
+        body.light .font-semibold.underline {
+            text-decoration: none; /* 移除下劃線 */
+            background: rgba(99, 102, 241, 0.1); /* 淡淡的底色 */
+            padding: 2px 6px;
+            border-radius: 6px;
+            color: #4f46e5 !important;
+        }
+
+        /* 基礎樣式：深色模式下維持原樣 */
+        span.text-white {
+            transition: color 0.3s ease;
+        }
+
+        /* 淺色模式下的特殊處理 */
+        /* 在淺色模式下，確保這些強調文字有足夠的對比度 */
+        body.light .font-semibold.underline {
+            color: #1e293b !important; /* 強制淺色模式下使用深色 */
+            text-decoration-color: inherit; /* 保持 HTML 中定義的 decoration-500 顏色 */
+        }
+
+        /* 深色模式由 Tailwind 的 dark:text-white 處理，通常不需要額外 CSS */
+
+        /* 如果你希望兩者顏色有細微區分 */
+        body.light .decoration-indigo-500 {
+            color: #4338ca !important; /* 偏藍 */
+        }
+
+        body.light .decoration-purple-500 {
+            color: #7e22ce !important; /* 偏紫 */
+        }
+
+        /* 確保在切換模式時，這兩個關鍵詞的表現符合預期 */
+        body.light .font-semibold.underline {
+            color: #0f172a !important; /* 淺色模式下變回深藍黑 */
+        }
+
+        /* 深色模式下的 CSS 權重，確保維持純白 */
+        body:not(.light) .dark\:text-white {
+            color: #ffffff !important;
+        }
+
+        /* 確保所有模式下的 glass-card 都有基礎的 hover 位移 */
+        .glass-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 讓滑動更有彈性感 */
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px) !important; /* 增加位移量，讓選定感更明顯 */
+        }
+
+        /* 淺色模式下的 Hover 特效強化 */
+        body.light .glass-card:hover {
+            background: rgba(255, 255, 255, 0.9); /* 稍微變亮，增加浮空感 */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08); /* 增加柔和陰影 */
+            border-color: var(--accent);
+        }
+
+        /* 深色模式下的 Hover 特效強化 (保持原本的) */
+        body:not(.light) .glass-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 靛藍色區塊 Hover */
+        body.light .border-l-indigo-500:hover {
+            box-shadow: 0 12px 24px rgba(79, 70, 229, 0.1);
+        }
+
+        /* 紫色區塊 Hover */
+        body.light .border-l-purple-500:hover {
+            box-shadow: 0 12px 24px rgba(168, 85, 247, 0.1);
+        }
+
+        /* 移除 Modal 關閉按鈕在淺色模式下的預設背景 */
+        body.light #infoModal button {
+            background-color: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+
+        /* 增加 Hover 效果，讓使用者知道這是可以點擊的 */
+        body.light #infoModal button:hover {
+            color: #4f46e5 !important; /* 變成靛藍色 */
+        }
+
+        /* 確保 Modal 內的文字在淺色模式下清晰 */
+        body.light #infoModal h4 {
+            color: #1e293b !important;
+        }
+
+        body.light #infoModal p {
+            color: #475569 !important;
+        }
+
+        /* 使用標準識別碼，避免引號導致的 css-identifierexpected 錯誤 */
+        .font-pacifico, 
+        h1, h2, h3, 
+        .text-gradient {
+            line-height: 1.5 !important;    /* 增加行高，確保字母下緣完整 */
+            padding-bottom: 0.15em !important; /* 為 j, y, g 留出安全空間 */
+            overflow: visible !important;   /* 允許字體細節溢出容器而不被裁切 */
+        }
+
+        /* 針對左上角 Logo Melodia.L 的精確對齊 */
+        nav a span, 
+        .nav-blur span {
+            display: inline-flex;
+            align-items: center;
+            line-height: 1.2;
+        }
+
+        /* 修正 Pacifico 字體右側裁切與高度不足 */
+        .font-pacifico-fix {
+            display: inline-block !important; /* 必須設為 inline-block，padding 才會生效 */
+            line-height: 1.5 !important;      /* 修正高度不足（上下裁切） */
+            padding-right: 0.15em !important; /* 核心：給右側 L 留出空間，防止被切掉 */
+            padding-bottom: 0.1em !important; /* 修正底部裁切 */
+            overflow: visible !important;     /* 強制不裁切溢出部分 */
+            white-space: nowrap !important;   /* 防止字體因為空間不足自動換行 */
+        }
+
+        /* 自定義記憶庫滾輪 */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.5); /* 懸停時變成藍紫色 */
+}
+        </style>
 </head>
 <body>
-
-    
 
     <div class="bg-gradient">
         <div class="blob"></div>
@@ -81,7 +448,7 @@
 
     <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/50 backdrop-blur-md border-b border-white/5">
     <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="/index.html" class="text-2xl font-bold font-['Pacifico'] text-gradient z-50">Melodia.L</a>
+        <a href="/index.html" class="text-2xl font-bold font-['Pacifico'] font-pacifico-fix text-gradient z-50">Melodia.L</a>
         
         <div class="hidden md:flex items-center gap-8 text-sm tracking-widest">
             <a href="#about" class="hover:text-indigo-300 transition uppercase">About</a>
@@ -89,11 +456,19 @@
             <a href="#digital-garden" class="hover:text-indigo-300 transition uppercase">Garden</a>
             <a href="#research" class="hover:text-indigo-300 transition uppercase">Thoughts</a>
             <a href="#contact" class="hover:text-indigo-300 transition uppercase text-indigo-300">Say Hi</a>
+            <button id="theme-toggle" class="text-xl hover:text-indigo-400 transition-all p-2 rounded-full bg-white/5">
+                <i class="ph ph-moon-stars" id="theme-icon"></i>
+            </button>
         </div>
 
-        <button id="menu-btn" class="block md:hidden text-3xl text-white z-50 focus:outline-none transition-transform active:scale-90">
-            <i class="ph ph-list" id="menu-icon"></i>
-        </button>
+        <div class="flex items-center gap-4 md:hidden">
+            <button id="theme-toggle-mobile" class="text-xl p-2">
+                <i class="ph ph-moon-stars" id="theme-icon-mobile"></i>
+            </button>
+            <button id="menu-btn" class="text-3xl text-white z-50 focus:outline-none transition-transform active:scale-90">
+                <i class="ph ph-list" id="menu-icon"></i>
+            </button>
+        </div>
     </div>
 </nav>
 
@@ -109,7 +484,6 @@
 
         <div class="flex gap-8">
             <a href="https://github.com/MelodiousOL" target="_blank" class="text-2xl text-slate-400 hover:text-white transition-colors"><i class="ph ph-github-logo"></i></a>
-            <a href="https://www.instagram.com/l.yang_0625/" target="_blank" class="text-2xl text-slate-400 hover:text-pink-400 transition-colors"><i class="ph ph-instagram-logo"></i></a>
         </div>
     </div>
 </div>
@@ -121,8 +495,8 @@
                 <h2 class="text-indigo-300 font-mono mb-4">// Hello, World. I am</h2>
                 <h1 class="text-6xl md:text-8xl font-bold mb-6">悠揚 <span class="text-gradient">Melodia</span></h1>
                 <p class="text-xl text-slate-400 max-w-lg leading-relaxed">
-                    「如果只是選項之一，那我選擇不存在。」<br>
-                    一位熱愛心理學的 <span class="text-white font-semibold underline decoration-indigo-500">iOS 開發者</span> 與 <span class="text-white font-semibold underline decoration-purple-500">完美主義者</span>。
+                    「用心理洞察，優化每個細節。」<br>
+                    一位熱愛心理學的 <span class="text-slate-900 dark:text-white font-semibold underline decoration-indigo-500 decoration-2 underline-offset-4 transition-all duration-300">iOS 開發者</span> 與 <span class="text-slate-900 dark:text-white font-semibold underline decoration-purple-500 decoration-2 underline-offset-4 transition-all duration-300">完美主義者</span>
                 </p>
                 <div class="mt-10 flex flex-wrap gap-4 justify-center md:justify-start items-center">
                     <a href="#featured-projects" class="bg-indigo-600 hover:bg-indigo-500 px-8 py-3 rounded-2xl transition shadow-lg shadow-indigo-500/20 text-white font-medium">
@@ -413,117 +787,146 @@
         </section>
 
         <section id="research" class="mb-32">
-    <div class="mb-12">
-        <h2 class="text-3xl font-bold mb-2 italic font-['Pacifico'] text-gradient">Psychology & Thoughts</h2>
-        <p class="text-slate-400">「捕捉那些轉瞬即逝的思考碎片。」</p>
-    </div>
-
-    <div class="columns-1 md:columns-2 gap-6 space-y-6">
-        
-        <div class="glass-card p-8 break-inside-avoid group hover:bg-indigo-500/5 transition-all duration-500 border-l-4 border-l-indigo-500">
-            <div class="flex items-center gap-2 mb-4">
-                <i class="ph ph-quotes text-2xl text-indigo-400 opacity-50"></i>
-                <span class="text-xs font-mono text-slate-500 tracking-widest">2024.10.24</span>
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold mb-2 italic font-['Pacifico'] font-pacifico-fix text-gradient">Psychology & Thoughts</h2>
+                <p class="text-slate-400">「捕捉那些轉瞬即逝的思考碎片。」</p>
             </div>
-            <p class="text-lg text-slate-200 leading-relaxed mb-4">
-                為什麼完美主義是一種進步的阻礙？
-                <span class="block text-sm text-slate-400 mt-2 font-light">
-                    因為在等待「最完美」的起點時，我們往往錯過了「最合適」的成長。
-                </span>
-            </p>
-            <div class="flex gap-2">
-                <span class="px-2 py-1 rounded-md bg-white/5 text-[10px] text-slate-500 italic">#Perfectionism</span>
-            </div>
-        </div>
 
-        <div class="glass-card p-8 break-inside-avoid group hover:bg-purple-500/5 transition-all duration-500 border-l-4 border-l-purple-500">
-            <div class="flex items-center gap-2 mb-4 text-purple-400">
-                <i class="ph ph-butterfly text-2xl opacity-50"></i>
-                <span class="text-xs font-mono text-slate-500 tracking-widest">2024.11.02</span>
-            </div>
-            <p class="text-lg text-slate-200 leading-relaxed mb-4">
-                HSP 在高壓資工環境下的生存指南。
-                <span class="block text-sm text-slate-400 mt-2 font-light">
-                    敏感不是弱點，而是偵測 Bug 與理解用戶需求的超能力。
-                </span>
-            </p>
-            <div class="flex gap-2 text-purple-400/70">
-                <span class="px-2 py-1 rounded-md bg-white/5 text-[10px] italic">#HSP_Life</span>
-            </div>
-        </div>
-
-    </div>
-
-    <section id="contact" class="mb-32 py-20 relative overflow-hidden">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-500/10 blur-[120px] rounded-full -z-10"></div>
-
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="inline-block mb-6 px-4 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/5 text-indigo-300 text-xs tracking-[0.2em] font-mono">
-                GET IN TOUCH
-            </div>
-            
-            <h2 class="text-5xl md:text-6xl font-bold mb-8 text-white">期待與<span class="text-gradient">你</span>的交流</h2>
-            
-            <p class="text-slate-400 text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
-                無論是 iOS 開發的技術交流、心理學的深度探討，或是單純想分享你的故事，我都隨時歡迎你的消息。
-            </p>
-
-            <div class="max-w-md mx-auto">
-                <div class="glass-card p-10 flex flex-col items-center justify-center gap-8">
-                    <div class="w-16 h-16 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-3xl text-indigo-400">
-                        <i class="ph ph-chat-circle-dots"></i>
+           <div class="flex-grow overflow-y-auto p-8 custom-scrollbar">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-8">
+                
+                <div class="glass-card p-8 flex flex-col transition-all duration-500 border-l-4 border-l-indigo-500">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="ph ph-compass text-2xl text-indigo-400 opacity-50"></i>
+                        <span class="text-xs font-mono text-slate-500 tracking-widest">2024.10.24</span>
                     </div>
-                    
-                    <div class="w-full">
-                        <h4 class="text-sm font-mono text-slate-500 mb-8 tracking-[0.2em] uppercase">Connect via Social Media</h4>
+                    <div class="flex-grow">
+                        <p class="text-lg text-slate-200 leading-relaxed mb-4">
+                            為什麼熱衷於完美主義？
+                            <span class="block text-sm text-slate-400 mt-2 font-light italic">
+                                它並不是一種制約我的規則，而是我對每一件事情所抱持的專業態度與自我要求。
+                            </span>
+                        </p>
+                    </div>
+                    <div class="flex gap-2 mt-auto pt-4">
+                        <span class="px-2 py-1 rounded-md bg-white/5 text-[10px] text-indigo-400 italic">#Professionalism</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 flex flex-col transition-all duration-500 border-l-4 border-l-purple-500">
+                    <div class="flex items-center gap-2 mb-4 text-purple-400">
+                        <i class="ph ph-eye text-2xl opacity-50"></i>
+                        <span class="text-xs font-mono text-slate-500 tracking-widest">2024.11.02</span>
+                    </div>
+                    <div class="flex-grow">
+                        <p class="text-lg text-slate-200 leading-relaxed mb-4">
+                            HSP 在高壓資工環境下的生存指南。
+                            <span class="block text-sm text-slate-400 mt-2 font-light italic">
+                                敏感不是弱點，而是發現 Bug 與理解用戶需求的超能力。
+                            </span>
+                        </p>
+                    </div>
+                    <div class="flex gap-2 mt-auto pt-4 text-purple-400/70">
+                        <span class="px-2 py-1 rounded-md bg-white/5 text-[10px] italic">#HSP_Life</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 flex flex-col transition-all duration-500 border-l-4 border-l-blue-500">
+                    <div class="flex items-center gap-2 mb-4 text-blue-400">
+                        <i class="ph ph-seal-check text-2xl opacity-50"></i>
+                        <span class="text-xs font-mono text-slate-500 tracking-widest">2025.01.20</span>
+                    </div>
+                    <div class="flex-grow">
+                        <p class="text-lg text-slate-200 leading-relaxed mb-4">
+                            對我而言，每個任務都是同等重要。
+                            <span class="block text-sm text-slate-400 mt-2 font-light italic">
+                                從最小的細節到完整的作品，我都堅持保持一貫的高標準。
+                            </span>
+                        </p>
+                    </div>
+                    <div class="flex gap-2 mt-auto pt-4 text-blue-400/70">
+                        <span class="px-2 py-1 rounded-md bg-white/5 text-[10px] italic">#Commitment</span>
+                        <span class="px-2 py-1 rounded-md bg-white/5 text-[10px] italic">#High_Standards</span>
+                    </div>
+                </div>
+
+                <div onclick="openThoughtModal()" class="glass-card p-8 flex flex-col justify-center items-center border-2 border-dashed border-white/10 opacity-60 hover:opacity-100 hover:border-sky-400/50 transition-all duration-500 group cursor-pointer min-h-[250px]">
+            <div class="flex flex-col items-center gap-4">
+                <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:scale-110 group-hover:border-sky-400 group-hover:bg-sky-400/10 transition-all duration-500">
+                    <i class="ph ph- leer-list text-2xl text-slate-400 group-hover:text-sky-400"></i>
+                </div>
+                <div class="text-center">
+                    <p class="text-sm font-mono text-slate-400 tracking-widest uppercase mb-1">View All Thoughts</p>
+                    <p class="text-xs text-slate-500 italic">點擊進入記憶圖書館</p>
+                </div>
+            </div>
+        </div>
+
+            </div>
+        </section>
+
+        <section id="contact" class="mb-32 py-20 relative overflow-hidden">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-500/10 blur-[120px] rounded-full -z-10"></div>
+
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <div class="inline-block mb-6 px-4 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/5 text-indigo-300 text-xs tracking-[0.2em] font-mono">
+                    GET IN TOUCH
+                </div>
+                
+                <h2 class="text-5xl md:text-6xl font-bold mb-8 text-white">期待與<span class="text-gradient">你</span>的交流</h2>
+                
+                <p class="text-slate-400 text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
+                    如果你也認同我的理念，歡迎追蹤我的社群媒體；資訊相關的探討與技術交流，也都可以透過平台與我聯繫。
+                </p>
+
+                <div class="max-w-md mx-auto">
+                    <div class="glass-card p-10 flex flex-col items-center justify-center gap-8">
+                        <div class="w-16 h-16 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-3xl text-indigo-400">
+                            <i class="ph ph-chat-circle-dots"></i>
+                        </div>
                         
-                        <div class="flex items-center justify-center gap-10">
-                            <a href="https://m.facebook.com/huang.ying.ya.383134" target="_blank" 
-                            class="group relative flex flex-col items-center">
-                                <i class="ph ph-facebook-logo text-4xl text-slate-400 group-hover:text-blue-500 transition-all duration-300"></i>
-                                <span class="absolute -bottom-8 text-[10px] opacity-0 group-hover:opacity-100 transition-all text-slate-500 font-mono tracking-widest">FB</span>
-                            </a>
+                        <div class="w-full">
+                            <h4 class="text-sm font-mono text-slate-500 mb-8 tracking-[0.2em] uppercase">Connect via Social Media</h4>
+                            
+                            <div class="flex items-center justify-center gap-10">
+                                <a href="https://m.facebook.com/huang.ying.ya.383134" target="_blank" 
+                                class="group relative flex flex-col items-center">
+                                    <i class="ph ph-facebook-logo text-4xl text-slate-400 group-hover:text-blue-500 transition-all duration-300"></i>
+                                    <span class="absolute -bottom-8 text-[10px] opacity-0 group-hover:opacity-100 transition-all text-slate-500 font-mono tracking-widest">FB</span>
+                                </a>
 
-                            <a href="https://www.instagram.com/l.yang_0625/" target="_blank" 
-                            class="group relative flex flex-col items-center">
-                                <i class="ph ph-instagram-logo text-4xl text-slate-400 group-hover:text-pink-500 transition-all duration-300"></i>
-                                <span class="absolute -bottom-8 text-[10px] opacity-0 group-hover:opacity-100 transition-all text-slate-500 font-mono tracking-widest">IG</span>
-                            </a>
+                                <a href="https://www.instagram.com/l.yang_0625/" target="_blank" 
+                                class="group relative flex flex-col items-center">
+                                    <i class="ph ph-instagram-logo text-4xl text-slate-400 group-hover:text-pink-500 transition-all duration-300"></i>
+                                    <span class="absolute -bottom-8 text-[10px] opacity-0 group-hover:opacity-100 transition-all text-slate-500 font-mono tracking-widest">IG</span>
+                                </a>
 
-                            <a href="https://www.threads.net/@l.yang_0625/" target="_blank" 
-                            class="group relative flex flex-col items-center">
-                                <i class="ph ph-threads-logo text-4xl text-slate-400 group-hover:text-white transition-all duration-300"></i>
-                                <span class="absolute -bottom-8 text-[10px] opacity-0 group-hover:opacity-100 transition-all text-slate-500 font-mono tracking-widest">THREADS</span>
-                            </a>
+                                <a href="https://www.threads.net/@l.yang_0625/" target="_blank" 
+                                class="group relative flex flex-col items-center">
+                                    <i class="ph ph-threads-logo text-4xl text-slate-400 group-hover:text-white transition-all duration-300"></i>
+                                    <span class="absolute -bottom-8 text-[10px] opacity-0 group-hover:opacity-100 transition-all text-slate-500 font-mono tracking-widest">THREADS</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="mt-24 pt-10 border-t border-white/5 flex flex-col items-center justify-center gap-6 text-slate-500 text-sm font-mono w-full">
-                <p class="text-center hover:text-indigo-400 transition-colors duration-500 cursor-default animate-pulse">
-                    Thank you for being here. Let’s keep exploring the perfection of life and tech in our own ways.
-                </p>
+                
             </div>
-        </div>
-    </section>
-</section>
-
+        </section>
     </main>
 
     <footer class="py-20 border-t border-white/5 text-center">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col items-center">           
-        <div class="flex flex-col items-center gap-2 text-slate-600 font-mono tracking-[0.15em] uppercase">
-            <p class="text-[14px]">© 2026 Melodia.L</p>
-            
-            <p class="text-[14px] opacity-80">
-                Designed by 
-                <span class="text-slate-500 normal-case">Melodia.L</span> 
-                ‧ All Rights Reserved
-            </p>
+        <div class="max-w-6xl mx-auto px-6 flex flex-col items-center">           
+            <div class="flex flex-col items-center gap-2 text-slate-600 font-mono tracking-[0.15em] uppercase">
+                <p class="text-[14px]">© 2026 Melodia.L</p>
+                <p class="text-[12px] text-center hover:text-indigo-400 transition-colors duration-500 cursor-default animate-pulse">
+                        Thank you for being here. Let’s keep exploring the perfection of life and tech in our own ways.
+                    </p>
+
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
     <div id="infoModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-6">
         <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="toggleModal()"></div>
@@ -570,6 +973,94 @@
         </div>
     </div>
 
+    <div id="thoughtModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 backdrop-blur-xl bg-black/40 transition-all duration-300 overflow-hidden">
+    <div class="glass-card w-full max-w-5xl h-[85vh] flex flex-col shadow-2xl overflow-hidden !bg-slate-900/60 border-white/20">
+        
+        <div class="p-8 border-b border-white/10 flex justify-between items-start bg-white/5">
+            <div>
+                <h2 class="text-3xl font-bold mb-2 italic font-['Pacifico'] font-pacifico-fix text-gradient">Memory Library</h2>
+                <p class="text-slate-400 text-sm">「捕捉那些轉瞬即逝的思考碎片。」</p>
+            </div>
+            <button onclick="closeThoughtModal()" class="group w-12 h-12 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all duration-300 border border-white/10">
+                <i class="ph ph-x text-2xl text-slate-400 group-hover:text-white transition-colors"></i>
+            </button>
+        </div>
+
+        <div class="flex-grow overflow-y-auto p-8 custom-scrollbar">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-8">
+                
+                <div class="glass-card p-8 flex flex-col transition-all duration-500 border-l-4 border-l-indigo-500">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="ph ph-compass text-2xl text-indigo-400 opacity-50"></i>
+                        <span class="text-xs font-mono text-slate-500 tracking-widest">2024.10.24</span>
+                    </div>
+                    <div class="flex-grow">
+                        <p class="text-lg text-slate-200 leading-relaxed mb-4">
+                            為什麼熱衷於完美主義？
+                            <span class="block text-sm text-slate-400 mt-2 font-light italic">
+                                它並不是一種制約我的規則，而是我對每一件事情所抱持的專業態度與自我要求。
+                            </span>
+                        </p>
+                    </div>
+                    <div class="flex gap-2 mt-auto pt-4">
+                        <span class="px-2 py-1 rounded-md bg-white/5 text-[10px] text-indigo-400 italic">#Professionalism</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 flex flex-col transition-all duration-500 border-l-4 border-l-purple-500">
+                    <div class="flex items-center gap-2 mb-4 text-purple-400">
+                        <i class="ph ph-eye text-2xl opacity-50"></i>
+                        <span class="text-xs font-mono text-slate-500 tracking-widest">2024.11.02</span>
+                    </div>
+                    <div class="flex-grow">
+                        <p class="text-lg text-slate-200 leading-relaxed mb-4">
+                            HSP 在高壓資工環境下的生存指南。
+                            <span class="block text-sm text-slate-400 mt-2 font-light italic">
+                                敏感不是弱點，而是發現 Bug 與理解用戶需求的超能力。
+                            </span>
+                        </p>
+                    </div>
+                    <div class="flex gap-2 mt-auto pt-4 text-purple-400/70">
+                        <span class="px-2 py-1 rounded-md bg-white/5 text-[10px] italic">#HSP_Life</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 flex flex-col transition-all duration-500 border-l-4 border-l-blue-500">
+                    <div class="flex items-center gap-2 mb-4 text-blue-400">
+                        <i class="ph ph-seal-check text-2xl opacity-50"></i>
+                        <span class="text-xs font-mono text-slate-500 tracking-widest">2025.01.20</span>
+                    </div>
+                    <div class="flex-grow">
+                        <p class="text-lg text-slate-200 leading-relaxed mb-4">
+                            對我而言，每個任務都是同等重要。
+                            <span class="block text-sm text-slate-400 mt-2 font-light italic">
+                                從最小的細節到完整的作品，我都堅持保持一貫的高標準。
+                            </span>
+                        </p>
+                    </div>
+                    <div class="flex gap-2 mt-auto pt-4 text-blue-400/70">
+                        <span class="px-2 py-1 rounded-md bg-white/5 text-[10px] italic">#Commitment</span>
+                        <span class="px-2 py-1 rounded-md bg-white/5 text-[10px] italic">#High_Standards</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 flex flex-col justify-center items-center border-2 border-dashed border-white/10 opacity-60 transition-all duration-500 min-h-[220px]">
+                    <div class="flex flex-col items-center gap-4 text-center">
+                        <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center">
+                            <i class="ph ph-scribble-loop text-xl text-slate-400 animate-pulse"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-mono text-slate-400 tracking-[0.2em] uppercase mb-1">More to Come</p>
+                            <p class="text-xs text-slate-500 font-light italic">「新的思考碎片正在緩慢打磨中...」</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
     <style>
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.95); }
@@ -605,78 +1096,153 @@
     </style>
 
     <script>
-    // 元素選取
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIcon = document.getElementById('menu-icon');
-    const modal = document.getElementById('infoModal');
-
-    // 1. 手機版選單切換
-    function toggleMenu() {
-        const isOpen = !mobileMenu.classList.contains('translate-x-full');
+        // --- 元素選取 ---
+        const body = document.body;
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const modal = document.getElementById('infoModal');
         
-        mobileMenu.classList.toggle('translate-x-full');
-        
-        if (!isOpen) { // 準備打開
-            menuIcon.classList.replace('ph-list', 'ph-x');
-            document.body.style.overflow = 'hidden';
-        } else { // 準備關閉
-            menuIcon.classList.replace('ph-x', 'ph-list');
-            document.body.style.overflow = 'auto';
-        }
-    }
+        // 主題切換相關元素 (對應你在 HTML 中新增的 ID)
+        const themeBtn = document.getElementById('theme-toggle');
+        const themeBtnMobile = document.getElementById('theme-toggle-mobile');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
 
-    menuBtn.addEventListener('click', toggleMenu);
-
-    // 2. Modal 彈窗控制 (iOS 風格細節)
-    function toggleModal() {
-        if (modal.classList.contains('hidden')) {
-            modal.classList.replace('hidden', 'flex');
-            document.body.style.overflow = 'hidden';
-        } else {
-            modal.classList.replace('flex', 'hidden');
-            document.body.style.overflow = 'auto';
-        }
-    }
-
-    // ESC 鍵關閉 Modal
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-            toggleModal();
-        }
-    });
-
-    // 3. 作品過濾功能
-    function filterSelection(category) {
-        const cards = document.querySelectorAll(".glass-card");
-        const buttons = document.querySelectorAll(".filter-btn");
-
-        // 更新按鈕樣式
-        buttons.forEach(btn => {
-            btn.classList.remove("text-indigo-400", "border-b-2", "border-indigo-400");
-            btn.classList.add("text-slate-500");
-        });
-        
-        if (event) {
-            event.currentTarget.classList.add("text-indigo-400", "border-b-2", "border-indigo-400");
-            event.currentTarget.classList.remove("text-slate-500");
+        // --- 1. 深淺色主題邏輯 ---
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if (savedTheme === 'light') {
+                applyTheme('light');
+            } else {
+                applyTheme('dark');
+            }
         }
 
-        // 執行過濾
-        cards.forEach(card => {
-            const isFilterable = card.classList.contains('cat-notes') || card.classList.contains('cat-sky');
-            if (isFilterable) {
-                if (category === "all" || card.classList.contains(category)) {
-                    card.style.display = "block";
-                    setTimeout(() => card.style.opacity = "1", 10);
-                } else {
-                    card.style.opacity = "0";
-                    setTimeout(() => card.style.display = "none", 400);
+        function applyTheme(mode) {
+            if (mode === 'light') {
+                body.classList.add('light');
+                updateThemeIcons('ph-sun'); // 淺色模式顯示太陽
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.remove('light');
+                updateThemeIcons('ph-moon-stars'); // 深色模式顯示月亮
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        function updateThemeIcons(iconName) {
+            [themeIcon, themeIconMobile].forEach(icon => {
+                if (icon) {
+                    icon.className = `ph ${iconName}`;
                 }
+            });
+        }
+
+        // 綁定主題切換事件
+        [themeBtn, themeBtnMobile].forEach(btn => {
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    const isLight = body.classList.contains('light');
+                    applyTheme(isLight ? 'dark' : 'light');
+                });
             }
         });
-    }
-    
-</script>
+
+        // --- 2. 手機版選單控制 ---
+        function toggleMenu() {
+            const isClosed = mobileMenu.classList.contains('translate-x-full');
+            
+            if (isClosed) {
+                mobileMenu.classList.remove('translate-x-full');
+                menuIcon.classList.replace('ph-list', 'ph-x');
+                body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.add('translate-x-full');
+                menuIcon.classList.replace('ph-x', 'ph-list');
+                body.style.overflow = 'auto';
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+
+        // --- 3. Modal 彈窗控制 ---
+        function toggleModal() {
+            const isHidden = modal.classList.contains('hidden');
+            if (isHidden) {
+                modal.classList.replace('hidden', 'flex');
+                body.style.overflow = 'hidden';
+            } else {
+                modal.classList.replace('flex', 'hidden');
+                body.style.overflow = 'auto';
+            }
+        }
+
+        // ESC 鍵快速關閉 Modal
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                toggleModal();
+            }
+        });
+
+        // --- 4. Digital Garden 作品過濾 ---
+        function filterSelection(category) {
+            const cards = document.querySelectorAll(".glass-card");
+            const buttons = document.querySelectorAll(".filter-btn");
+
+            // 更新按鈕樣式
+            buttons.forEach(btn => {
+                btn.classList.remove("text-indigo-400", "border-b-2", "border-indigo-400");
+                btn.classList.add("text-slate-500");
+            });
+            
+            // 觸發事件的按鈕高亮
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add("text-indigo-400", "border-b-2", "border-indigo-400");
+                event.currentTarget.classList.remove("text-slate-500");
+            }
+
+            // 執行過濾動畫
+            cards.forEach(card => {
+                // 只過濾有分類標籤的卡片
+                const isFilterable = card.classList.contains('cat-notes') || card.classList.contains('cat-sky');
+                if (isFilterable) {
+                    if (category === "all" || card.classList.contains(category)) {
+                        card.style.display = "block";
+                        setTimeout(() => { card.style.opacity = "1"; }, 10);
+                    } else {
+                        card.style.opacity = "0";
+                        setTimeout(() => { card.style.display = "none"; }, 400);
+                    }
+                }
+            });
+        }
+
+        // --- 初始化執行 ---
+        window.onload = () => {
+            initTheme();
+        };
+
+        function openThoughtModal() {
+    const modal = document.getElementById('thoughtModal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    // 開啟時加入一點淡入動畫
+    modal.style.opacity = "0";
+    setTimeout(() => { modal.style.opacity = "1"; }, 10);
+    document.body.style.overflow = 'hidden'; // 禁止背景捲動
+}
+
+function closeThoughtModal() {
+    const modal = document.getElementById('thoughtModal');
+    modal.style.opacity = "0";
+    setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto'; // 恢復背景捲動
+    }, 300);
+}
+    </script>
+
 </body>
 </html>

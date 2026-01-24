@@ -7,18 +7,39 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <script src="https://cdn.tailwindcss.com"></script> <link href="assets/..." rel="stylesheet"> <link href="../assets/..." rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         :root { --glass: rgba(255, 255, 255, 0.03); --border: rgba(255, 255, 255, 0.1); }
-        body { background: #0f172a; color: #e2e8f0; font-family: 'Noto Sans TC', sans-serif; }
+        body { background: #0f172a; color: #e2e8f0; font-family: 'Noto Sans TC', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
         .glass-card { background: var(--glass); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 24px; }
         .nav-blur { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
         .iframe-container { position: relative; width: 100%; padding-bottom: 75%; height: 0; overflow: hidden; border-radius: 16px; }
         .iframe-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+        /* --- 淺色模式校正 --- */
+        body.light { background: #f1f5f9; color: #1e293b; }
+        body.light .nav-blur { background: rgba(255, 255, 255, 0.8); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        body.light .glass-card { background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(0, 0, 0, 0.05); box-shadow: 0 8px 32px rgba(31, 38, 135, 0.05); }
+        body.light h2.text-indigo-300, body.light h3.text-indigo-200 { color: #4f46e5; }
+        body.light .text-slate-500, body.light .text-slate-400 { color: #64748b; }
+        body.light .text-purple-300 { color: #7e22ce; }
+        body.light .border-white\/5 { border-color: rgba(0, 0, 0, 0.05); }
     </style>
+
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.add('light');
+            }
+        })();
+    </script>
 </head>
-<body>
+<body class="dark:bg-[#0f172a]"> <script>
+        // 同步狀態到 body
+        if (localStorage.getItem('theme') === 'light') document.body.classList.add('light');
+    </script>
 
     <nav id="shared-nav" class="fixed top-0 w-full z-50 nav-blur"></nav>
 
@@ -36,8 +57,10 @@
                 <div class="glass-card p-8">
                     <h2 class="text-2xl font-bold mb-6 text-indigo-300">Information</h2>
                     <ul class="space-y-4">
-                        <li class="flex flex-col"><span class="text-xs text-slate-500 uppercase tracking-widest mb-1">Learning Unit</span><span class="text-lg font-medium">資料結構 (Data Structures)</span></li>
-                        <li class="flex flex-col border-t border-white/5 pt-4"><span class="text-xs text-slate-500 uppercase tracking-widest mb-1">Date</span><span class="text-lg font-medium">2025 / 01 / 21</span></li>
+                        <li class="flex flex-col"><span class="text-xs text-slate-500 uppercase tracking-widest mb-1">Learning Unit</span><span class="text-lg font-medium">資料結構 (Data Structures)
+</span></li>
+                        <li class="flex flex-col border-t border-white/5 pt-4"><span class="text-xs text-slate-500 uppercase tracking-widest mb-1">Date</span><span class="text-lg font-medium">2025 / 01 / 21
+</span></li>
                         <li class="flex flex-col border-t border-white/5 pt-4"><span class="text-xs text-slate-500 uppercase tracking-widest mb-1">Category</span><span class="text-lg font-medium text-purple-300">CS Fundamentals</span></li>
                     </ul>
                 </div>
@@ -53,15 +76,43 @@
     <footer id="shared-footer"></footer>
 
     <script>
+        // 1. 組件載入功能
         function loadComponent(id, file) {
-            fetch(file)
+            return fetch(file)
                 .then(response => response.text())
-                .then(data => { document.getElementById(id).innerHTML = data; });
+                .then(data => { 
+                    document.getElementById(id).innerHTML = data;
+                    if (id === 'shared-nav') {
+                        updateNavIcons();
+                        setupThemeToggle(); // 載入 nav 後重新綁定切換按鈕
+                    }
+                });
         }
-        // 執行載入
+
+        // 2. 更新 Nav 裡的圖示
+        function updateNavIcons() {
+            const isLight = document.body.classList.contains('light');
+            const icons = [document.getElementById('theme-icon'), document.getElementById('theme-icon-mobile')];
+            const iconClass = isLight ? 'ph-sun' : 'ph-moon-stars';
+            icons.forEach(icon => { if (icon) icon.className = `ph ${iconClass}`; });
+        }
+
+        // 3. 讓這一頁的 nav 按鈕也能點擊切換
+        function setupThemeToggle() {
+            const btns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+            btns.forEach(btn => {
+                if (btn) {
+                    btn.addEventListener('click', () => {
+                        const isLight = document.body.classList.toggle('light');
+                        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+                        updateNavIcons();
+                    });
+                }
+            });
+        }
+
         loadComponent('shared-nav', 'nav.html');
         loadComponent('shared-footer', 'footer.html');
     </script>
-
 </body>
 </html>
