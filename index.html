@@ -176,8 +176,15 @@
         body.light #skills h3 {
             color: #0f172a;
         }
-        body.light #skills span {
+        body.light #skills span:not(.bg-indigo-600):not(.bg-purple-600):not(.bg-teal-600):not(.bg-sky-600) {
             color: #1e293b; /* 技能名稱 Swift/C++ 等 */
+        }
+        /* 確保有深色背景的標籤在淺色模式下保持白色文字 */
+        body.light #skills span.bg-indigo-600,
+        body.light #skills span.bg-purple-600,
+        body.light #skills span.bg-teal-600,
+        body.light #skills span.bg-sky-600 {
+            color: #ffffff !important;
         }
 
         /* 5. 頁尾 (Footer) */
@@ -438,6 +445,56 @@
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: rgba(99, 102, 241, 0.5); /* 懸停時變成藍紫色 */
 }
+
+        /* --- 導航按鈕互動效果 --- */
+        .nav-link {
+            position: relative;
+            padding-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #a5b4fc, #e879f9);
+            transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Say Hi 按鈕常顯示下劃線 */
+        .nav-link.active {
+            color: #a5b4fc;
+            border-bottom: 2px solid #a5b4fc !important;
+        }
+
+        .nav-link.active::after {
+            display: none;
+        }
+
+        /* 淺色模式下的導航按鈕樣式 */
+        body.light .nav-link {
+            color: #1e293b;
+        }
+
+        body.light .nav-link:hover {
+            color: #4f46e5;
+        }
+
+        body.light .nav-link.active {
+            color: #4f46e5;
+            border-bottom-color: #4f46e5 !important;
+        }
+
+        body.light .nav-link::after {
+            background: linear-gradient(to right, #4f46e5, #c026d3);
+        }
         </style>
 </head>
 <body>
@@ -451,11 +508,11 @@
         <a href="index.html" class="text-2xl font-bold font-['Pacifico'] font-pacifico-fix text-gradient z-50">Melodia.L</a>
         
         <div class="hidden md:flex items-center gap-8 text-sm tracking-widest">
-            <a href="#about" class="hover:text-indigo-300 transition uppercase">About</a>
-            <a href="#featured-projects" class="hover:text-indigo-300 transition uppercase">Projects</a>
-            <a href="#digital-garden" class="hover:text-indigo-300 transition uppercase">Journal</a>
-            <a href="#research" class="hover:text-indigo-300 transition uppercase">Thoughts</a>
-            <a href="#contact" class="hover:text-indigo-300 transition uppercase text-indigo-300">Say Hi</a>
+            <a href="#about" class="nav-link hover:text-indigo-300 hover:border-b-2 hover:border-indigo-400 pb-1 transition uppercase">About</a>
+            <a href="#featured-projects" class="nav-link hover:text-indigo-300 hover:border-b-2 hover:border-indigo-400 pb-1 transition uppercase">Projects</a>
+            <a href="#digital-garden" class="nav-link hover:text-indigo-300 hover:border-b-2 hover:border-indigo-400 pb-1 transition uppercase">Journal</a>
+            <a href="#research" class="nav-link hover:text-indigo-300 hover:border-b-2 hover:border-indigo-400 pb-1 transition uppercase">Psychology</a>
+            <a href="#contact" class="nav-link active hover:text-indigo-300 hover:border-b-2 hover:border-indigo-400 pb-1 transition uppercase text-indigo-300 border-b-2 border-indigo-400">Say Hi</a>
             <button id="theme-toggle" class="text-xl hover:text-indigo-400 transition-all p-2 rounded-full bg-white/5">
                 <i class="ph ph-moon-stars" id="theme-icon"></i>
             </button>
@@ -477,13 +534,13 @@
         <a href="#about" class="mobile-link text-3xl font-light tracking-[0.2em]" onclick="toggleMenu()">ABOUT</a>
         <a href="#featured-projects" class="mobile-link text-3xl font-light tracking-[0.2em]" onclick="toggleMenu()">PROJECTS</a>
         <a href="#digital-garden" class="mobile-link text-3xl font-light tracking-[0.2em]" onclick="toggleMenu()">JOURNAL</a>
-        <a href="#research" class="mobile-link text-3xl font-light tracking-[0.2em]" onclick="toggleMenu()">THOUGHTS</a>
+        <a href="#research" class="mobile-link text-3xl font-light tracking-[0.2em]" onclick="toggleMenu()">PSYCHOLOGY</a>
         <a href="#contact" class="mobile-link text-3xl font-bold tracking-[0.2em] text-indigo-400" onclick="toggleMenu()">SAY HI</a>
         
         <div class="h-[1px] w-12 bg-white/10 my-4"></div>
 
         <div class="flex gap-8">
-            <a href="https://github.com/MelodiousOL" target="_blank" class="text-2xl text-slate-400 hover:text-white transition-colors"><i class="ph ph-github-logo"></i></a>
+            <a href="https://github.com/MelodiousOL" target="_blank" class="text-2xl text-slate-400 hover:text-slate-200 transition-colors" title="GitHub"><i class="ph ph-github-logo"></i></a>
         </div>
     </div>
 </div>
@@ -506,7 +563,7 @@
                     <div class="h-8 w-[1px] bg-white/10 mx-2 hidden md:block"></div>
 
                     <div class="flex gap-3">
-                        <a href="https://github.com/MelodiousOL" target="_blank" class="glass-card w-12 h-12 flex items-center justify-center text-xl hover:text-white hover:bg-white/10 transition-all" title="GitHub">
+                        <a href="https://github.com/MelodiousOL" target="_blank" class="glass-card w-12 h-12 flex items-center justify-center text-xl hover:text-slate-200 hover:bg-slate-500/10 transition-all" title="GitHub">
                             <i class="ph ph-github-logo"></i>
                         </a>
                         
@@ -514,12 +571,16 @@
                             <i class="ph ph-instagram-logo"></i>
                         </a>
 
-                        <a href="https://www.threads.net/@l.yang_0625/" target="_blank" class="glass-card w-12 h-12 flex items-center justify-center text-xl hover:text-white hover:bg-white/10 transition-all" title="Threads">
+                        <a href="https://www.threads.net/@l.yang_0625/" target="_blank" class="glass-card w-12 h-12 flex items-center justify-center text-xl hover:text-purple-500 hover:bg-purple-500/10 transition-all" title="Threads">
                             <i class="ph ph-threads-logo"></i>
                         </a>
 
                         <a href="https://m.facebook.com/huang.ying.ya.383134" target="_blank" class="glass-card w-12 h-12 flex items-center justify-center text-xl hover:text-blue-400 hover:bg-blue-500/10 transition-all" title="Facebook">
                             <i class="ph ph-facebook-logo"></i>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/悠揚-ol-254bb53b3/" target="_blank" class="glass-card w-12 h-12 flex items-center justify-center text-xl hover:text-blue-500 hover:bg-blue-500/10 transition-all" title="LinkedIn">
+                            <i class="ph ph-linkedin-logo"></i>
                         </a>
                     </div>
                 </div>
@@ -572,114 +633,196 @@
             </div>
         </section>
 
-        <section id="skills" class="mb-32">
+        <section id="experience" class="mb-32">
             <div class="glass-card p-8 md:p-12">
-                <h3 class="text-3xl font-bold mb-10 flex items-center gap-3">
-                    <i class="ph ph-target text-indigo-400"></i> Skill Spectrum
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <i class="ph ph-briefcase text-purple-400"></i> 產學實踐與研究
                 </h3>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
-                    <div class="space-y-6">
-                        <h4 class="text-indigo-300 font-mono text-sm uppercase tracking-widest mb-4">// Software & Logic</h4>
-                        
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-sm">
-                                <span>Swift / iOS</span>
-                                <span class="text-indigo-400">75%</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- 實驗室研究 -->
+                    <div class="border-l-4 border-l-purple-500 pl-6 py-4">
+                        <div class="flex items-start justify-between gap-4 mb-3">
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1">實驗室研究助理</h4>
+                                <p class="text-sm text-slate-400">專題教授實驗室</p>
                             </div>
-                            <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                                <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full" style="width: 75%"></div>
-                            </div>
+                            <span class="text-xs text-slate-500 font-mono tracking-widest whitespace-nowrap">進行中</span>
                         </div>
-
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-sm">
-                                <span>C++ / C</span>
-                                <span class="text-indigo-400">80% / 75%</span>
-                            </div>
-                            <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                                <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full" style="width: 80%"></div>
-                            </div>
-                        </div>
-
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-sm">
-                                <span>Python</span>
-                                <span class="text-indigo-400">80%</span>
-                            </div>
-                            <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                                <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full" style="width: 80%"></div>
-                            </div>
-                        </div>
-
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-sm">
-                                <span>Web (HTML / CSS / JS)</span>
-                                <span class="text-indigo-400">80% / 65% / 65%</span>
-                            </div>
-                            <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                                <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full" style="width: 70%"></div>
-                            </div>
-                        </div>
-
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-sm">
-                                <span>PHP / Java</span>
-                                <span class="text-indigo-400">70% / 75%</span>
-                            </div>
-                            <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                                <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full" style="width: 72%"></div>
-                            </div>
+                        <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                            參與產學合作專案，與業界廠商進行技術交流與軟體設計。協助開發客製化解決方案，應用所學的程式設計與系統整合技能於實際商業需求。
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-purple-500/10 text-purple-300 text-[10px] rounded border border-purple-500/20">軟體開發</span>
+                            <span class="px-2 py-1 bg-purple-500/10 text-purple-300 text-[10px] rounded border border-purple-500/20">系統設計</span>
+                            <span class="px-2 py-1 bg-purple-500/10 text-purple-300 text-[10px] rounded border border-purple-500/20">業界合作</span>
                         </div>
                     </div>
 
-                    <div class="space-y-6 flex flex-col">
-                        <h4 class="text-purple-300 font-mono text-sm uppercase tracking-widest mb-4">// Systems & Hardware</h4>
+                    <!-- 技能應用 -->
+                    <div class="border-l-4 border-l-indigo-500 pl-6 py-4">
+                        <h4 class="text-xl font-bold text-white mb-3">核心實踐領域</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <i class="ph ph-check text-indigo-400 mt-1 flex-shrink-0"></i>
+                                <span class="text-sm text-slate-400">iOS / 跨平台應用開發</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="ph ph-check text-indigo-400 mt-1 flex-shrink-0"></i>
+                                <span class="text-sm text-slate-400">系統架構與軟體設計</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="ph ph-check text-indigo-400 mt-1 flex-shrink-0"></i>
+                                <span class="text-sm text-slate-400">客戶需求分析與技術方案</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="ph ph-check text-indigo-400 mt-1 flex-shrink-0"></i>
+                                <span class="text-sm text-slate-400">產學合作與業界溝通</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="mb-32">
+            <div class="glass-card p-8 md:p-12">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
+                    <h3 class="text-2xl font-bold flex items-center gap-3">
+                        <i class="ph ph-code-block text-indigo-400"></i> Technical Expertise
                         
-                        <div class="space-y-6 flex-1">
-                            <div class="space-y-2">
-                                <div class="flex justify-between text-sm">
-                                    <span>Arduino / Embedded</span>
-                                    <span class="text-purple-400">80%</span>
-                                </div>
-                                <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                                    <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full" style="width: 80%"></div>
-                                </div>
-                            </div>
+                    </h3>
+                    <p class="text-slate-400 text-sm max-w-md text-right hidden md:block italic">
+                        "Focus on iOS development, with a solid foundation in systems and cross-domain integration."
+                    </p>
+                </div>
 
-                            <div class="space-y-2">
-                                <div class="flex justify-between text-sm">
-                                    <span>Linux System</span>
-                                    <span class="text-purple-400">75%</span>
-                                </div>
-                                <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                                    <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full" style="width: 75%"></div>
-                                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- iOS Development -->
+                    <div class="bg-white/5 rounded-2xl p-8 border border-white/10 hover:border-indigo-500/50 transition-all duration-300 group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i class="ph ph-device-mobile text-8xl text-indigo-500"></i>
+                        </div>
+                        
+                        <div class="flex items-center gap-4 mb-6 relative z-10">
+                            <div class="w-14 h-14 rounded-2xl bg-indigo-500/20 text-indigo-300 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform shadow-lg shadow-indigo-500/10">
+                                <i class="ph ph-device-mobile"></i>
                             </div>
-
-                            <div class="space-y-2">
-                                <div class="flex justify-between text-sm">
-                                    <span>Internet of Things (IoT)</span>
-                                    <span class="text-purple-400">70%</span>
-                                </div>
-                                <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                                    <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full" style="width: 70%"></div>
-                                </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1">iOS Development</h4>
+                                <span class="text-xs font-mono text-indigo-400 uppercase tracking-wider">Core • Application</span>
                             </div>
                         </div>
+                        
+                        <p class="text-sm text-slate-400 mb-6 leading-relaxed relative z-10 min-h-[3rem]">
+                            目前主要投入的學習方向，持續探索 Apple 生態系開發，鑽研 UI/UX 細節呈現與基礎架構設計。
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 relative z-10">
+                            <span class="px-3 py-1 bg-indigo-600 text-white rounded-lg text-xs font-bold shadow-lg shadow-indigo-500/20">Swift</span>
+                            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-200 border border-indigo-500/20 rounded-lg text-xs group-hover:border-indigo-500/40 transition-colors">SwiftUI</span>
+                            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-200 border border-indigo-500/20 rounded-lg text-xs group-hover:border-indigo-500/40 transition-colors">UIKit</span>
+                            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-200 border border-indigo-500/20 rounded-lg text-xs group-hover:border-indigo-500/40 transition-colors">MVVM</span>
+                            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-200 border border-indigo-500/20 rounded-lg text-xs group-hover:border-indigo-500/40 transition-colors">MVC</span>
 
-                        <div class="mt-8 p-6 bg-indigo-500/5 border border-indigo-500/20 rounded-2xl italic text-sm text-slate-400">
-                            <i class="ph ph-quotes text-indigo-400 mb-2 block text-2xl"></i>
-                            技術是實現浪漫的手段。我不只寫代碼，我用代碼建構世界。
                         </div>
                     </div>
+
+                    <!-- Systems & Embedded -->
+                    <div class="bg-white/5 rounded-2xl p-8 border border-white/10 hover:border-purple-500/50 transition-all duration-300 group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i class="ph ph-cpu text-8xl text-purple-500"></i>
+                        </div>
+
+                        <div class="flex items-center gap-4 mb-6 relative z-10">
+                            <div class="w-14 h-14 rounded-2xl bg-purple-500/20 text-purple-300 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform shadow-lg shadow-purple-500/10">
+                                <i class="ph ph-cpu"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1">Systems & Embedded</h4>
+                                <span class="text-xs font-mono text-purple-400 uppercase tracking-wider">Hardware • IoT</span>
+                            </div>
+                        </div>
+
+                        <p class="text-sm text-slate-400 mb-6 leading-relaxed relative z-10 min-h-[3rem]">
+                            接觸系統與嵌入式開發，具備基礎運作概念，能進行軟硬體整合與 IoT 專案實作。
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 relative z-10">
+                            <span class="px-3 py-1 bg-purple-600 text-white rounded-lg text-xs font-bold shadow-lg shadow-purple-500/20">C++ / C</span>
+                            <span class="px-3 py-1 bg-purple-500/10 text-purple-200 border border-purple-500/20 rounded-lg text-xs group-hover:border-purple-500/40 transition-colors">Raspberry Pi</span>
+                            <span class="px-3 py-1 bg-purple-500/10 text-purple-200 border border-purple-500/20 rounded-lg text-xs group-hover:border-purple-500/40 transition-colors">Arduino</span>
+                            <span class="px-3 py-1 bg-purple-500/10 text-purple-200 border border-purple-500/20 rounded-lg text-xs group-hover:border-purple-500/40 transition-colors">Linux</span>
+                            <span class="px-3 py-1 bg-purple-500/10 text-purple-200 border border-purple-500/20 rounded-lg text-xs group-hover:border-purple-500/40 transition-colors">IoT</span>
+                        </div>
+                    </div>
+
+                    <!-- Web & Backend -->
+                    <div class="bg-white/5 rounded-2xl p-8 border border-white/10 hover:border-teal-500/50 transition-all duration-300 group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i class="ph ph-globe text-8xl text-teal-500"></i>
+                        </div>
+
+                        <div class="flex items-center gap-4 mb-6 relative z-10">
+                            <div class="w-14 h-14 rounded-2xl bg-teal-500/20 text-teal-300 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform shadow-lg shadow-teal-500/10">
+                                <i class="ph ph-globe"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1">Web & Backend</h4>
+                                <span class="text-xs font-mono text-teal-400 uppercase tracking-wider">Full Stack • Data</span>
+                            </div>
+                        </div>
+
+                        <p class="text-sm text-slate-400 mb-6 leading-relaxed relative z-10 min-h-[3rem]">
+                            接觸全端開發，具備資料庫設計、API 串接與資料爬取相關應用能力。
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 relative z-10">
+                            <span class="px-3 py-1 bg-teal-600 text-white rounded-lg text-xs font-bold shadow-lg shadow-teal-500/20">Python</span>
+                            <span class="px-3 py-1 bg-teal-500/10 text-teal-200 border border-teal-500/20 rounded-lg text-xs group-hover:border-teal-500/40 transition-colors">Java</span>
+                            <span class="px-3 py-1 bg-teal-500/10 text-teal-200 border border-teal-500/20 rounded-lg text-xs group-hover:border-teal-500/40 transition-colors">HTML / CSS / JavaScript</span>
+                            <span class="px-3 py-1 bg-teal-500/10 text-teal-200 border border-teal-500/20 rounded-lg text-xs group-hover:border-teal-500/40 transition-colors">REST API</span>
+                            <span class="px-3 py-1 bg-teal-500/10 text-teal-200 border border-teal-500/20 rounded-lg text-xs group-hover:border-teal-500/40 transition-colors">PostgreSQL</span>
+                        </div>
+                    </div>
+
+                    <!-- Developer Tools -->
+                    <div class="bg-white/5 rounded-2xl p-8 border border-white/10 hover:border-sky-500/50 transition-all duration-300 group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i class="ph ph-toolbox text-8xl text-sky-500"></i>
+                        </div>
+
+                        <div class="flex items-center gap-4 mb-6 relative z-10">
+                            <div class="w-14 h-14 rounded-2xl bg-sky-500/20 text-sky-300 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform shadow-lg shadow-sky-500/10">
+                                <i class="ph ph-toolbox"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1">Tools & Workflow</h4>
+                                <span class="text-xs font-mono text-sky-400 uppercase tracking-wider">DevOps • Utilities</span>
+                            </div>
+                        </div>
+
+                        <p class="text-sm text-slate-400 mb-6 leading-relaxed relative z-10 min-h-[3rem]">
+                            熟悉版本控制與常用開發工具，並建立穩定且清晰的開發流程。
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 relative z-10">
+                            <span class="px-3 py-1 bg-sky-600 text-white rounded-lg text-xs font-bold shadow-lg shadow-sky-500/20">Git</span>
+                            <span class="px-3 py-1 bg-sky-500/10 text-sky-200 border border-sky-500/20 rounded-lg text-xs group-hover:border-sky-500/40 transition-colors">n8n</span>
+                            <span class="px-3 py-1 bg-sky-500/10 text-sky-200 border border-sky-500/20 rounded-lg text-xs group-hover:border-sky-500/40 transition-colors">Xcode</span>
+                            <span class="px-3 py-1 bg-sky-500/10 text-sky-200 border border-sky-500/20 rounded-lg text-xs group-hover:border-sky-500/40 transition-colors">VS Code</span>
+                            <span class="px-3 py-1 bg-sky-500/10 text-sky-200 border border-sky-500/20 rounded-lg text-xs group-hover:border-sky-500/40 transition-colors">Docker</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
         <section id="featured-projects" class="mb-32">
             <div class="mb-12">
-                <h2 class="text-4xl font-bold mb-2 text-gradient">Personal Projects</h2>
+                <h2 class="text-3xl font-bold mb-2 italic font-['Pacifico'] font-pacifico-fix text-gradient">Personal Projects</h2>
                 <p class="text-slate-400">「邏輯與創意的實踐場所，目前包含 iOS 開發與系統整合。」</p>
             </div>
 
@@ -704,7 +847,7 @@
        <section id="digital-garden" class="mb-32">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                 <div>
-                    <h2 class="text-4xl font-bold mb-2 text-gradient">Digital Journal</h2>
+                    <h2 class="text-3xl font-bold mb-2 italic font-['Pacifico'] font-pacifico-fix text-gradient">Digital Journal</h2>
                     <p class="text-slate-400">「於此處分享知識，在星光下紀錄生活。」</p>
                 </div>
 
@@ -868,50 +1011,86 @@
         <section id="contact" class="mb-32 py-20 relative overflow-hidden">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-500/10 blur-[120px] rounded-full -z-10"></div>
 
-            <div class="max-w-4xl mx-auto px-6 text-center">
-                <div class="inline-block mb-6 px-4 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/5 text-indigo-300 text-xs tracking-[0.2em] font-mono">
-                    GET IN TOUCH
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <div class="inline-block mb-6 px-4 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/5 text-indigo-300 text-xs tracking-[0.2em] font-mono">
+                        GET IN TOUCH
+                    </div>
+                    
+                    <h2 class="text-5xl md:text-6xl font-bold mb-6 text-white">聯繫與合作</h2>
+                    <p class="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+                        無論你是尋找合作夥伴、技術討論，或只是想交流想法，我都很樂意聆聽。選擇最適合你的方式與我聯繫。
+                    </p>
                 </div>
-                
-                <h2 class="text-5xl md:text-6xl font-bold mb-8 text-white">期待與<span class="text-gradient">你</span>的交流</h2>
-                
-                <p class="text-slate-400 text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
-                    如果你也認同我的理念，歡迎追蹤我的社群媒體；資訊相關的探討與技術交流，也都可以透過平台與我聯繫。
-                </p>
 
-                <div class="max-w-md mx-auto">
-                    <div class="glass-card p-10 flex flex-col items-center justify-center gap-8">
-                        <div class="w-16 h-16 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-3xl text-indigo-400">
-                            <i class="ph ph-chat-circle-dots"></i>
+                <!-- 三個聯繫方式卡片 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- 1. 郵件直接溝通 -->
+                    <div class="glass-card p-8 flex flex-col items-center text-center group hover:border-indigo-500/50 transition-all duration-300">
+                        <div class="w-16 h-16 rounded-2xl bg-indigo-500/20 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-indigo-500/30 transition-all duration-300">
+                            <i class="ph ph-envelope text-3xl text-indigo-400"></i>
                         </div>
                         
-                        <div class="w-full">
-                            <h4 class="text-sm font-mono text-slate-500 mb-8 tracking-[0.2em] uppercase">Connect via Social Media</h4>
-                            
-                            <div class="flex items-center justify-center gap-10">
-                                <a href="https://m.facebook.com/huang.ying.ya.383134" target="_blank" 
-                                class="group relative flex flex-col items-center">
-                                    <i class="ph ph-facebook-logo text-4xl text-slate-400 group-hover:text-blue-500 transition-all duration-300"></i>
-                                    <span class="absolute -bottom-8 text-[10px] opacity-0 group-hover:opacity-100 transition-all text-slate-500 font-mono tracking-widest">FB</span>
-                                </a>
+                        <h3 class="text-xl font-bold text-white mb-3">郵件直接溝通</h3>
+                        <p class="text-sm text-slate-400 mb-6 flex-grow">
+                            最直接的聯繫方式，我會盡快回覆你的訊息
+                        </p>
+                        
+                        <a href="mailto:a2005062550322@gmail.com" 
+                        class="inline-block px-6 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-medium rounded-lg transition-all duration-300 text-sm tracking-wider">
+                            發送郵件
+                        </a>
+                    </div>
 
-                                <a href="https://www.instagram.com/l.yang_0625/" target="_blank" 
-                                class="group relative flex flex-col items-center">
-                                    <i class="ph ph-instagram-logo text-4xl text-slate-400 group-hover:text-pink-500 transition-all duration-300"></i>
-                                    <span class="absolute -bottom-8 text-[10px] opacity-0 group-hover:opacity-100 transition-all text-slate-500 font-mono tracking-widest">IG</span>
-                                </a>
+                    <!-- 2. 快速查看作品集 -->
+                    <div class="glass-card p-8 flex flex-col items-center text-center group hover:border-purple-500/50 transition-all duration-300">
+                        <div class="w-16 h-16 rounded-2xl bg-purple-500/20 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-purple-500/30 transition-all duration-300">
+                            <i class="ph ph-code-block text-3xl text-purple-400"></i>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-white mb-3">快速查看作品集</h3>
+                        <p class="text-sm text-slate-400 mb-6 flex-grow">
+                            瀏覽我的專案與程式碼，深入了解我的技術能力
+                        </p>
+                        
+                        <a href="https://github.com/MelodiousOL" target="_blank" 
+                        class="inline-block px-6 py-2 bg-purple-600 hover:bg-purple-500 text-white font-medium rounded-lg transition-all duration-300 text-sm tracking-wider">
+                            GitHub Profile
+                        </a>
+                    </div>
 
-                                <a href="https://www.threads.net/@l.yang_0625/" target="_blank" 
-                                class="group relative flex flex-col items-center">
-                                    <i class="ph ph-threads-logo text-4xl text-slate-400 group-hover:text-white transition-all duration-300"></i>
-                                    <span class="absolute -bottom-8 text-[10px] opacity-0 group-hover:opacity-100 transition-all text-slate-500 font-mono tracking-widest">THREADS</span>
-                                </a>
-                            </div>
+                    <!-- 3. 社群媒體 -->
+                    <div class="glass-card p-8 flex flex-col items-center text-center group hover:border-pink-500/50 transition-all duration-300">
+                        <div class="w-16 h-16 rounded-2xl bg-pink-500/20 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-pink-500/30 transition-all duration-300">
+                            <i class="ph ph-share-network text-3xl text-pink-400"></i>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-white mb-3">社群媒體</h3>
+                        <p class="text-sm text-slate-400 mb-6 flex-grow">
+                            追蹤我的日常分享與技術思考過程
+                        </p>
+                        
+                        <div class="flex gap-6 justify-center w-full">
+                            <a href="https://www.instagram.com/l.yang_0625/" target="_blank" 
+                            class="group/icon flex flex-col items-center">
+                                <i class="ph ph-instagram-logo text-3xl text-slate-400 group-hover/icon:text-pink-500 transition-all duration-300"></i>
+                                <span class="text-[10px] text-slate-500 mt-1 font-mono tracking-widest">IG</span>
+                            </a>
+
+                            <a href="https://www.threads.net/@l.yang_0625/" target="_blank" 
+                            class="group/icon flex flex-col items-center">
+                                <i class="ph ph-threads-logo text-3xl text-slate-400 group-hover/icon:text-purple-500 transition-all duration-300"></i>
+                                <span class="text-[10px] text-slate-500 mt-1 font-mono tracking-widest">THREADS</span>
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/悠揚-ol-254bb53b3/" target="_blank" 
+                            class="group/icon flex flex-col items-center">
+                                <i class="ph ph-linkedin-logo text-3xl text-slate-400 group-hover/icon:text-blue-500 transition-all duration-300"></i>
+                                <span class="text-[10px] text-slate-500 mt-1 font-mono tracking-widest">LINKEDIN</span>
+                            </a>
                         </div>
                     </div>
                 </div>
-
-                
             </div>
         </section>
     </main>
@@ -928,47 +1107,92 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" class="fixed bottom-8 right-8 z-50 hidden w-14 h-14 rounded-full bg-indigo-600 hover:bg-indigo-500 hover:shadow-lg hover:shadow-indigo-500/50 border border-indigo-400/30 flex items-center justify-center text-white transition-all duration-300 animate-[slideInUp_0.5s_ease-out]">
+        <i class="ph ph-arrow-up text-xl"></i>
+    </button>
+
     <div id="infoModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-6">
         <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="toggleModal()"></div>
         
-        <div class="glass-card max-w-lg w-full p-8 relative z-10 border-indigo-500/30 animate-[fadeIn_0.3s_ease-out]">
+        <div class="glass-card max-w-4xl w-full p-8 relative z-10 border-indigo-500/30 animate-[fadeIn_0.3s_ease-out] max-h-[85vh] overflow-y-auto">
             <div class="flex justify-between items-start mb-8">
                 <h3 class="text-2xl font-bold text-gradient font-['Pacifico']">Full Specs</h3>
-                <button onclick="toggleModal()" class="text-slate-400 hover:text-white text-2xl">
+                <button onclick="toggleModal()" class="text-slate-400 hover:text-white text-2xl flex-shrink-0">
                     <i class="ph ph-x"></i>
                 </button>
             </div>
 
-            <div class="space-y-6 text-slate-300">
-                <div class="flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center shrink-0">
-                        <i class="ph ph-fingerprint text-indigo-400 text-xl"></i>
+            <!-- 網格布局：一行可放 2-3 個 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 1. 人格深度分析 -->
+                <div class="glass-card p-6 border-l-4 border-l-indigo-500 flex flex-col">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center shrink-0">
+                            <i class="ph ph-fingerprint text-indigo-400 text-xl"></i>
+                        </div>
+                        <h4 class="font-bold text-white">人格深度分析</h4>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-white mb-1">人格深度分析</h4>
-                        <p class="text-sm leading-relaxed text-slate-400">作為 ENFJ-A，我對人的需求有種天生的直覺。雖然在社交場合很自在，但我其實更享受獨自整理邏輯的過程——比起熱鬧，我更喜歡把複雜的事情梳理得井然有序，並從中獲得滿足感。</p>
-                    </div>
+                    <p class="text-sm leading-relaxed text-slate-400 flex-grow">作為 ENFJ-A，我對人的需求有種天生的直覺。雖然在社交場合很自在，但我其實更享受獨自整理邏輯的過程。</p>
                 </div>
 
-                <div class="flex items-start gap-4 border-t border-white/5 pt-6">
-                    <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center shrink-0">
-                        <i class="ph ph-map-pin text-purple-400 text-xl"></i>
+                <!-- 2. 當前座標 -->
+                <div class="glass-card p-6 border-l-4 border-l-purple-500 flex flex-col">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center shrink-0">
+                            <i class="ph ph-map-pin text-purple-400 text-xl"></i>
+                        </div>
+                        <h4 class="font-bold text-white">當前座標</h4>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-white mb-1">當前座標：台中</h4>
-                        <p class="text-sm text-slate-400">在浪漫的晴時多雲下，練習在日常的縫隙中捕捉靈感，不論是生活還是創作，都想守住那份對質感的執著。</p>
-                    </div>
+                    <p class="text-sm text-slate-400 flex-grow">台中｜在浪漫的晴時多雲下，練習在日常的縫隙中捕捉靈感，守住對質感的執著。</p>
                 </div>
 
-                <div class="flex items-start gap-4 border-t border-white/5 pt-6">
-                    <div class="w-10 h-10 rounded-full bg-pink-500/20 flex items-center justify-center shrink-0">
-                        <i class="ph ph-graduation-cap text-pink-400 text-xl"></i>
+                <!-- 3. 學術背景 -->
+                <div class="glass-card p-6 border-l-4 border-l-pink-500 flex flex-col">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-pink-500/20 flex items-center justify-center shrink-0">
+                            <i class="ph ph-graduation-cap text-pink-400 text-xl"></i>
+                        </div>
+                        <h4 class="font-bold text-white">學術背景</h4>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-white mb-1">學術背景</h4>
-                        <p class="text-sm text-slate-400">台中科技大學 資工系｜比起數字與規則，我更偏好去雕琢那份讓人感到順暢、無礙的使用者體驗。對我而言，最底層的邏輯應當隱於無形，只留下最直覺的感受。</p>
-                    </div>
+                    <p class="text-sm text-slate-400 flex-grow">台中科技大學 資工系｜偏好去雕琢讓人感到順暢的使用體驗，最底層的邏輯應隱於無形。</p>
                 </div>
+
+                <!-- 4. 工作風格 -->
+                <div class="glass-card p-6 border-l-4 border-l-blue-500 flex flex-col">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0">
+                            <i class="ph ph-handshake text-blue-400 text-xl"></i>
+                        </div>
+                        <h4 class="font-bold text-white">工作風格</h4>
+                    </div>
+                    <p class="text-sm text-slate-400 flex-grow">習慣獨立開發與自我管理，享受自主決策的過程。若遇見志同道合的夥伴，在友善熱情的團隊氛圍中，我也很樂意協同成長與技術交流。</p>
+                </div>
+
+                <!-- 5. 職業目標 -->
+                <div class="glass-card p-6 border-l-4 border-l-cyan-500 flex flex-col">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center shrink-0">
+                            <i class="ph ph-rocket text-cyan-400 text-xl"></i>
+                        </div>
+                        <h4 class="font-bold text-white">職業目標</h4>
+                    </div>
+                    <p class="text-sm text-slate-400 flex-grow">短期：成為 iOS 開發專家。<br>長期：探索跨域技術整合的可能性，做有溫度的產品。</p>
+                </div>
+
+                <!-- 6. 學習方式 -->
+                <div class="glass-card p-6 border-l-4 border-l-yellow-500 flex flex-col">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center shrink-0">
+                            <i class="ph ph-book text-yellow-400 text-xl"></i>
+                        </div>
+                        <h4 class="font-bold text-white">學習方式</h4>
+                    </div>
+                    <p class="text-sm text-slate-400 flex-grow">邊做邊學，通過實踐項目和技術文章深化理解。喜歡在完成的作品中看見進步。</p>
+                </div>
+            </div>
+        </div>
+    </div>
             </div>
         </div>
     </div>
@@ -1086,6 +1310,16 @@
         @keyframes fadeInSlideUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideOutDown {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(20px); }
         }
 
         /* 確保過濾卡片有平滑過渡 */
@@ -1222,6 +1456,27 @@
         window.onload = () => {
             initTheme();
         };
+
+        // --- 5. Back to Top 按鈕 ---
+        const backToTopBtn = document.getElementById('backToTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                if (backToTopBtn.classList.contains('hidden')) {
+                    backToTopBtn.classList.remove('hidden');
+                    backToTopBtn.classList.add('flex');
+                }
+            } else {
+                if (!backToTopBtn.classList.contains('hidden')) {
+                    backToTopBtn.classList.add('hidden');
+                    backToTopBtn.classList.remove('flex');
+                }
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
         function openThoughtModal() {
     const modal = document.getElementById('thoughtModal');
