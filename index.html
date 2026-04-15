@@ -66,6 +66,7 @@
 
         .text-gradient {
             background: linear-gradient(to right, #a5b4fc, #e879f9);
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -121,6 +122,7 @@
 
         body.light .text-gradient {
             background: linear-gradient(to right, #4f46e5, #c026d3);
+            background-clip: text;
             -webkit-background-clip: text;
         }
 
@@ -587,7 +589,7 @@
             </div>
             <div class="w-64 h-64 md:w-96 md:h-96 relative">
                 <div class="absolute inset-0 rounded-full border-2 border-dashed border-indigo-500/30 animate-[spin_20s_linear_infinite]"></div>
-                <img src="assets/img/image3.jpg" alt="Melodia" class="rounded-full w-full h-full object-cover p-4">
+                <img id="profile-photo" src="assets/img/image-dark.jpg" alt="Melodia" class="rounded-full w-full h-full object-cover p-4">
             </div>
         </section>
 
@@ -1370,13 +1372,21 @@
         }
 
         function applyTheme(mode) {
+            const profilePhoto = document.getElementById('profile-photo');
+            
             if (mode === 'light') {
                 body.classList.add('light');
                 updateThemeIcons('ph-sun'); // 淺色模式顯示太陽
+                if (profilePhoto) {
+                    profilePhoto.src = 'assets/img/image-light.jpg';
+                }
                 localStorage.setItem('theme', 'light');
             } else {
                 body.classList.remove('light');
                 updateThemeIcons('ph-moon-stars'); // 深色模式顯示月亮
+                if (profilePhoto) {
+                    profilePhoto.src = 'assets/img/image-dark.jpg';
+                }
                 localStorage.setItem('theme', 'dark');
             }
         }
